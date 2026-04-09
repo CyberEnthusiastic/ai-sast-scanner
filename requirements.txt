@@ -1,0 +1,2 @@
+# AI SAST Scanner has zero runtime dependencies.
+# Uses only Python 3.8+ stdlib (re, ast, json, hashlib, pathlib, dataclasses).
