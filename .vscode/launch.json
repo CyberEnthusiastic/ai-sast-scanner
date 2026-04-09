@@ -1,0 +1,38 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Scan: bundled samples/",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scanner.py",
+      "args": ["samples/"],
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Scan: current file only",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scanner.py",
+      "args": ["${file}"],
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Scan: prompt for path",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scanner.py",
+      "args": ["${input:targetPath}"],
+      "console": "integratedTerminal"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "targetPath",
+      "type": "promptString",
+      "description": "Path to the file or directory to scan",
+      "default": "samples/"
+    }
+  ]
+}

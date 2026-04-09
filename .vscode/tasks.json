@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "SAST: scan samples",
+      "type": "shell",
+      "command": "python scanner.py samples/",
+      "group": { "kind": "test", "isDefault": true },
+      "presentation": { "reveal": "always", "panel": "new" }
+    },
+    {
+      "label": "SAST: open HTML report",
+      "type": "shell",
+      "command": "start reports/sast_report.html",
+      "windows": { "command": "start reports/sast_report.html" },
+      "linux":   { "command": "xdg-open reports/sast_report.html" },
+      "osx":     { "command": "open reports/sast_report.html" },
+      "group": "test"
+    },
+    {
+      "label": "SAST: install dependencies",
+      "type": "shell",
+      "command": "python -m pip install -r requirements.txt",
+      "group": "build"
+    }
+  ]
+}
