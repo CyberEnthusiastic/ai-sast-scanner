@@ -1,0 +1,48 @@
+name: SAST Self-Scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run SAST scanner on samples
+        run: python scanner.py samples/
+
+      - name: Upload JSON report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sast-report-json
+          path: reports/sast_report.json
+
+      - name: Upload HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sast-report-html
+          path: reports/sast_report.html
+
+      - name: Show finding summary
+        run: |
+          python -c "
+          import json
+          r = json.load(open('reports/sast_report.json'))
+          s = r['summary']
+          print(f\"Files scanned : {s['files_scanned']}\")
+          print(f\"Lines scanned : {s['lines_scanned']}\")
+          print(f\"Total findings: {s['total_findings']}\")
+          print(f\"By severity   : {s['by_severity']}\")
+          "
