@@ -10,7 +10,7 @@ import re
 import ast
 import json
 import hashlib
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from dataclasses import dataclass, asdict, field
 from typing import List, Dict, Optional
@@ -243,7 +243,7 @@ class SASTScanner:
             "lines_scanned": self.lines_scanned,
             "total_findings": len(self.findings),
             "by_severity": by_sev,
-            "scanned_at": datetime.utcnow().isoformat() + "Z",
+            "scanned_at": datetime.now(tz=timezone.utc).isoformat(),
         }
 
 
