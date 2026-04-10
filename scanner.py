@@ -248,6 +248,9 @@ class SASTScanner:
 
 
 def main():
+    from license_guard import verify_license, print_banner
+    verify_license()
+    print_banner("AI SAST Scanner")
     import argparse
     parser = argparse.ArgumentParser(
         description="AI-Powered SAST Code Scanner — finds vulns with ML risk scoring"
