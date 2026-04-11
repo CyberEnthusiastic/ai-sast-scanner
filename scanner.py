@@ -3,7 +3,7 @@ AI-Powered SAST (Static Application Security Testing) Scanner
 Scans source code for security vulnerabilities using pattern matching,
 AST analysis, and ML-based risk scoring.
 
-Author: Adithya Vasamsetti (CyberEnthusiastic)
+Author: Mohith Vasamsetti (CyberEnthusiastic)
 """
 import os
 import re

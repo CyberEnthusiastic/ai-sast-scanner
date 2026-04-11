@@ -261,4 +261,4 @@ from fork to merged PR.
 
 ---
 
-Built by **[Adithya Vasamsetti (CyberEnthusiastic)](https://github.com/CyberEnthusiastic)** as part of the [AI Security Projects](https://github.com/CyberEnthusiastic?tab=repositories) suite — a set of zero-dependency, commercial-grade security tools for engineers and teams who want serious security without serious SaaS bills.
+Built by **[Mohith Vasamsetti (CyberEnthusiastic)](https://github.com/CyberEnthusiastic)** as part of the [AI Security Projects](https://github.com/CyberEnthusiastic?tab=repositories) suite — a set of zero-dependency, commercial-grade security tools for engineers and teams who want serious security without serious SaaS bills.
