@@ -1,0 +1,81 @@
+
+  AI SAST Scanner v1.0
+  Copyright (c) 2026 Mohith Vasamsetti
+  https://github.com/CyberEnthusiastic
+  Licensed for personal use only. See LICENSE for terms.
+
+============================================================
+  AI-Powered SAST Scanner v1.0
+============================================================
+[*] Target: samples/
+[*] Files scanned : 2
+[*] Lines scanned : 102
+[*] Total findings: 16
+[*] Breakdown     : {'CRITICAL': 10, 'HIGH': 5, 'MEDIUM': 1, 'LOW': 0}
+
+[91m[CRITICAL][0m Dangerous eval() / exec() usage
+   samples\vulnerable_app.py:52 (risk=73.8, CWE-95)
+   > result = eval(expr)
+
+[91m[CRITICAL][0m Command Injection (os.system / subprocess shell=True)
+   samples\vulnerable_app.py:35 (risk=73.2, CWE-78)
+   > os.system("ls " + cmd)
+
+[91m[CRITICAL][0m Command Injection (os.system / subprocess shell=True)
+   samples\vulnerable_app.py:36 (risk=73.2, CWE-78)
+   > subprocess.call("echo " + cmd, shell=True)
+
+[91m[CRITICAL][0m Insecure Deserialization (pickle)
+   samples\vulnerable_app.py:44 (risk=72.0, CWE-502)
+   > obj = pickle.loads(data.encode())
+
+[91m[CRITICAL][0m Dangerous eval() / exec() usage
+   samples\vulnerable_frontend.js:18 (risk=65.8, CWE-95)
+   > return eval(code);
+
+[93m[HIGH][0m Weak Cryptographic Hash (MD5 / SHA1)
+   samples\vulnerable_app.py:74 (risk=63.8, CWE-327)
+   > return hashlib.md5(pw.encode()).hexdigest()
+
+[93m[HIGH][0m Weak Cryptographic Hash (MD5 / SHA1)
+   samples\vulnerable_app.py:78 (risk=63.8, CWE-327)
+   > return hashlib.sha1(data).hexdigest()
+
+[91m[CRITICAL][0m Hardcoded Secret / API Key
+   samples\vulnerable_app.py:16 (risk=62.8, CWE-798)
+   > API_KEY = "PLACEHOLDER_FAKE_KEY_XXXXXXXXXXXXXXXX"
+
+[91m[CRITICAL][0m Hardcoded Secret / API Key
+   samples\vulnerable_app.py:17 (risk=62.8, CWE-798)
+   > AWS_SECRET = "PLACEHOLDER_FAKE_AWS_XXXXXXXXXXXXXXXX"
+
+[91m[CRITICAL][0m Hardcoded Secret / API Key
+   samples\vulnerable_app.py:18 (risk=62.8, CWE-798)
+   > DB_PASSWORD = "PLACEHOLDER_FAKE_DB_PASSWORD_1234567"
+
+[91m[CRITICAL][0m Hardcoded Secret / API Key
+   samples\vulnerable_frontend.js:13 (risk=62.8, CWE-798)
+   > const API_KEY = "PLACEHOLDER_FAKE_TOKEN_XXXXXXXXXXXXXXXXXXXX";
+
+[91m[CRITICAL][0m Hardcoded Secret / API Key
+   samples\vulnerable_frontend.js:14 (risk=62.8, CWE-798)
+   > const secret = "PLACEHOLDER_FAKE_SECRET_XXXXXXXXXXXXXXXXXXXX";
+
+[93m[HIGH][0m Path Traversal (open with unsanitized path)
+   samples\vulnerable_app.py:60 (risk=61.0, CWE-22)
+   > with open("/var/data/" + filename) as f:
+
+[93m[HIGH][0m Cross-Site Scripting (innerHTML with untrusted data)
+   samples\vulnerable_frontend.js:5 (risk=56.0, CWE-79)
+   > document.getElementById("comments").innerHTML = userInput;
+
+[93m[HIGH][0m Cross-Site Scripting (innerHTML with untrusted data)
+   samples\vulnerable_frontend.js:9 (risk=56.0, CWE-79)
+   > document.write("<h1>Hello " + name + "</h1>");
+
+[93m[MEDIUM][0m Debug mode enabled in production
+   samples\vulnerable_app.py:83 (risk=54.0, CWE-489)
+   > app.run(debug=True, host="0.0.0.0", port=5000)
+
+[+] JSON report: reports/sast_report.json
+[+] HTML report: reports/sast_report.html
